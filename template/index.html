@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 24px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+        h1 { color: #3366cc; text-align: center; }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            margin-bottom: 14px;
+            padding: 12px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3366cc;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        button:hover { background: #2851a3; }
+        .result {
+            margin-top: 18px;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1em;
+            border-radius: 4px;
+        }
+        .real { background: #d0ffd0; color: #215a22; }
+        .fake { background: #ffe0e0; color: #c00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fake News Detector</h1>
+        <form id="newsForm">
+            <label for="newsText"><strong>Enter news content:</strong></label>
+            <textarea id="newsText" name="newsText" required></textarea>
+            <button type="submit">Check</button>
+        </form>
+        <div id="result" class="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        // This is a mock demonstration. Replace with your backend logic as needed!
+        document.getElementById('newsForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            const news = document.getElementById('newsText').value.trim();
+            const resultDiv = document.getElementById('result');
+            if(!news) return;
+
+            // *** FAKE: This is a placeholder. ***
+            // Send `news` to your backend and display the actual prediction.
+            // For demo purposes, we'll randomly predict.
+            const isFake = Math.random() > 0.5;
+            if(isFake) {
+                resultDiv.textContent = "Warning: This news may be FAKE!";
+                resultDiv.className = "result fake";
+            } else {
+                resultDiv.textContent = "Good News: This news appears to be REAL!";
+                resultDiv.className = "result real";
+            }
+            resultDiv.style.display = "block";
+        });
+    </script>
+</body>
+</html>
