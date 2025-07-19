@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, 'lr_model.pkl')
 VECTORIZER_PATH = os.path.join(BASE_DIR, 'vectorizer.pkl')
 model = joblib.load(MODEL_PATH)
-Vectorizer = joblib.load('vectorizer.pkl')
+Vectorizer = joblib.load(VECTORIZER_PATH)
 
 def preprocess(text):
     text = text.lower()
@@ -48,3 +48,5 @@ def predict_news(request):
             color = "fake"
     return render(request, 'index.html', {'result': result})
 
+def home(request):
+    return render(request, 'index.html')  # No app name prefix needed
